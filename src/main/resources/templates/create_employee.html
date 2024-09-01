@@ -29,77 +29,62 @@
   </div>
 </nav>
 
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <!-- Brand -->
-  <a class="navbar-brand" href="#">Employee Management System</a>
-
-  <!-- Toggler/collapsibe Button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <!-- Navbar links -->
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/employees}">Employee Management</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
 	<div class = "container">
 		<div class = "row">
 			<div class = "col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-				<h1 class = "text-center"> Create New Employee </h1>
+				<h1 class = "text-center"> Add New Employee </h1>
 					<div class = "card-body">
 						<form th:action = "@{/employees}" th:object = "${employee}" method="POST">
 							<div class = "form-group">
-							<label> Employee First Name </label>
+							<label>First Name </label>
 								<input
 									type ="text"
 									name = "firstName"
 									th:field = "*{firstName}"
 									class = "form-control"
 									placeholder = "Enter Employee First Name"
+									required
 									/>
 							</div>
 							
 							<div class = "form-group">
-							<label> Employee Last Name </label>
+							<label>Last Name </label>
 								<input
 									type ="text"
 									name = "lastName"
 									th:field = "*{lastName}"
 									class = "form-control"
 									placeholder = "Enter Employee Last Name"
+									required
 									/>
 							</div>
 							
 							<div class = "form-group">
-							<label> Employee Age </label>
+							<label>Age </label>
 								<input
 									type ="text"
 									name = "age"
 									th:field = "*{age}"
 									class = "form-control"
 									placeholder = "Enter Student Age"
+									required
 									/>
 							</div>
 							
 							<div class = "form-group">
-							<label> Employee Email </label>
+							<label>Email </label>
 								<input
-									type ="text"
+									type ="email"
 									name = "email"
 									th:field = "*{email}"
 									class = "form-control"
 									placeholder = "Enter Student Email"
+									required
 									/>
 							</div>
 							
 							<div class = "form-group">
-							<label> Employee Contact Number </label>
+							<label>Contact Number </label>
 								<input
 									type ="text"
 									name = "moNumber"
@@ -107,6 +92,7 @@
 									class = "form-control"
 									placeholder = "Enter Student Contact Number"
 									/>
+									<div th:if="${#fields.hasErrors('moNumber')}" th:errors="*{moNumber}"></div>
 							</div>
 							
 							<div class = "box-footer">

@@ -36,29 +36,31 @@
 					<div class = "card-body">
 						<form th:action = "@{/employees/{id} (id=${employee.id})}" th:object = "${employee}" method="POST">
 							<div class = "form-group">
-							<label> Employee First Name </label>
+							<label>First Name </label>
 								<input
 									type ="text"
 									name = "firstName"
 									th:field = "*{firstName}"
 									class = "form-control"
 									placeholder = "Enter Employee First Name"
+									required
 									/>
 							</div>
 							
 							<div class = "form-group">
-							<label> Employee Last Name </label>
+							<label>Last Name </label>
 								<input
 									type ="text"
 									name = "lastName"
 									th:field = "*{lastName}"
 									class = "form-control"
 									placeholder = "Enter Employee Last Name"
+									required
 									/>
 							</div>
 							
 							<div class = "form-group">
-							<label> Student Age </label>
+							<label>Age </label>
 								<input
 									type ="text"
 									name = "age"
@@ -69,18 +71,19 @@
 							</div>
 							
 							<div class = "form-group">
-							<label> Employee Email </label>
+							<label>Email </label>
 								<input
 									type ="text"
 									name = "email"
 									th:field = "*{email}"
 									class = "form-control"
 									placeholder = "Enter Employee Email"
+									required
 									/>
 							</div>
 							
 							<div class = "form-group">
-							<label> Employee Mobile Number </label>
+							<label>Mobile Number </label>
 								<input
 									type ="text"
 									name = "moNumber"
@@ -88,6 +91,7 @@
 									class = "form-control"
 									placeholder = "Enter Employee Mobile Number"
 									/>
+									
 							</div>
 							
 							<div class = "box-footer">

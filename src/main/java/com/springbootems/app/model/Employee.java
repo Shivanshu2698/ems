@@ -1,40 +1,35 @@
 package com.springbootems.app.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name="employee")
 public class Employee {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(name="First_Name")
+
 	private String firstName;
-	
-	@Column(name="Last_Name")
+
 	private String lastName;
+
+	private Integer age;
+
 	
-	@Column(name="Age")
-	private String age;
-	
-	@Column(name="Email")
+	@NotNull
 	private String email;
 	
-	@Column(name="Mobile_Number")
 	private String moNumber;
-	
+
 	public Employee() {
 		super();
 	}
-	
-	public Employee(Long id, String firstName, String lastName, String age, String email, String moNumber) {
+
+	public Employee(Long id, String firstName, String lastName, int age, String email, String moNumber) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -68,11 +63,11 @@ public class Employee {
 		this.lastName = lastName;
 	}
 
-	public String getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 

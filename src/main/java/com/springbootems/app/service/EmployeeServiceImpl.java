@@ -9,11 +9,13 @@ import com.springbootems.app.repository.EmployeeRepository;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
+	private EmailService emailService;
 	private EmployeeRepository employeeRepository;
 
-	public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+	public EmployeeServiceImpl(EmployeeRepository employeeRepository, EmailService emailService) {
 		super();
 		this.employeeRepository = employeeRepository;
+		this.emailService=emailService;
 	}
 
 	@Override
@@ -23,7 +25,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee saveEmployee(Employee employee) {
-		return employeeRepository.save(employee);
+		Employee isSaved = employeeRepository.save(employee);
+		if(isSaved.getId()!=null) {
+			String subject="Employee Registration";
+			String body="Hello "+isSaved.getFirstName().toUpperCase()+" , "+ "Your EMS registration is successful !";
+			String to = isSaved.getEmail();
+			emailService.simpleMailSender(subject, body, to);
+		}
+		return isSaved;
 	}
 
 	@Override
